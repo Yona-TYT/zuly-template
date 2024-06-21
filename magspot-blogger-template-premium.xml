@@ -3,6 +3,7 @@
 <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:class='data:blog.languageDirection' expr:dir='data:blog.languageDirection' expr:lang='data:blog.localeUnderscoreDelimited' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <b:include name='dark-mode'/>
 <head>
+  <meta content='light dark' name='color-scheme'/>
 <b:include name='theme-head'/>
 <b:if cond='!data:view.isLayoutMode'>
 <b:skin version='1.0.0'><![CDATA[/*
@@ -1213,6 +1214,59 @@ ins.adsbygoogle-noablate[data-anchor-shown="true"]{z-index:990!important}
 .rtl .CSS_LIGHTBOX_BTN_CLOSE{right:unset!important;left:15px}
 .CSS_LIGHTBOX_ATTRIBUTION_INDEX_CONTAINER .CSS_HCONT_CHILDREN_HOLDER > .CSS_LAYOUT_COMPONENT.CSS_HCONT_CHILD:first-child > .CSS_LAYOUT_COMPONENT{opacity:0}
 .pbt-ad{display:flex;align-items:center;justify-content:center}
+
+@media (prefers-color-scheme: dark){
+:root {
+--body-bg-color:#27272b;
+--body-bg:#f5f6f7 none repeat fixed top left;
+--outer-bg:#16161a;
+--title-color:#f8f8fb;
+--title-hover-color:#fd3a13;
+--meta-color:#aaa;
+--text-color:#c5c5c8;
+--tag-bg:#fd3a13;
+--tag-color:#ffffff;
+--topbar-bg:#16161a;
+--topbar-color:#f8f8fb;
+--topbar-hover-color:#fd3a13;
+--header-bg:#202024;
+--header-color:#f8f8fb;
+--header-hover-color:#fd3a13;
+--submenu-bg:#252529;
+--submenu-color:#f8f8fb;
+--submenu-hover-color:#fd3a13;
+--mega-bg:#252529;
+--mega-color:#f8f8fb;
+--mega-hover-color:#fd3a13;
+--mega-meta-color:#aaa;
+--mobilemenu-bg:#16161a;
+--mobilemenu-color:#f8f8fb;
+--mobilemenu-hover-color:#fd3a13;
+--ticker-title-color:#fd3a13;
+--ticker-color:#f8f8fb;
+--ticker-hover-color:#fd3a13;
+--widget-bg:#202024;
+--widget-title-color:#f8f8fb;
+--widget-dash-color:#fd3a13;
+--footer-bg:#202024;
+--footer-color:#f8f8fb;
+--footer-hover-color:#fd3a13;
+--footer-meta-color:#aaa;
+--footer-text-color:#c5c5c8;
+--footerbar-bg:#16161a;
+--footerbar-color:#f8f8fb;
+--footerbar-hover-color:#fd3a13;
+--cookie-bg:#202024;
+--cookie-color:#c5c5c8;
+--button-bg:#fd3a13;
+--button-color:#fff;
+--button-hover-bg:#e33411;
+--button-hover-color:#ffffff;
+--gray-bg:rgba(255,255,255,0.03);
+--border-color:rgba(255,255,255,0.05);
+}
+}
+
 @media only screen and (max-width: $(row.width + 50px)) {
 #outer-wrapper,.is-boxed #outer-wrapper,.is-boxed .header-header{width:100%;max-width:100%;margin:0}
 .row-x1{width:100%}
@@ -1468,6 +1522,23 @@ body#layout #hidden-widgets{display:none!important}
 </b:if>
 <b:defaultmarkups>
   <b:defaultmarkup type='Common'>
+    
+  <b:includable id='content'>
+  <div id='google_translate_element'/>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: &#39;<b:eval expr='data:blog.locale.language ?: &quot;auto&quot;'/>&#39;,
+        autoDisplay: &#39;true&#39;,
+        layout: google.translate.TranslateElement.InlineLayout.<data:layout/>
+      }, &#39;google_translate_element&#39;);
+    }
+    </script>
+    <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'/>
+	</b:includable>
+    
+    
+    
     <b:includable id='dark-mode'>
       <b:class cond='data:skin.vars.darkmode == &quot;1px&quot;' name='is-dark dark-logo'/>
     </b:includable>
@@ -2813,6 +2884,17 @@ body#layout #hidden-widgets{display:none!important}
           </b:loop>
         </b:if>
       </div>
+				  <div id='google_translate_element'/>
+					  <script>
+						function googleTranslateElementInit() {
+						  new google.translate.TranslateElement({
+							pageLanguage: &#39;<b:eval expr='data:blog.locale.language ?: &quot;auto&quot;'/>&#39;,
+							autoDisplay: &#39;true&#39;,
+							layout: google.translate.TranslateElement.InlineLayout.<data:layout/>
+						  }, &#39;google_translate_element&#39;);
+						}
+					  </script>
+					  <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'/>
     </b:includable>
           <b:includable id='blogThisShare'><b:comment>Replaced</b:comment></b:includable>
           <b:includable id='bylineByName' var='byline'><b:comment>Replaced</b:comment></b:includable>
@@ -2856,7 +2938,7 @@ body#layout #hidden-widgets{display:none!important}
     <div class='flex-c' id='featured-wrapper'>
       <b:class cond='data:widgets any w =&gt; w.sectionId == &quot;ticker&quot;' name='has-ticker'/>
       <b:section class='featured container row-x1' id='featured' maxwidgets='1' name='Featured Posts' showaddelement='yes'>
-        <b:widget id='HTML11' locked='false' title='Featured Posts' type='HTML' visible='true'>
+        <b:widget id='HTML11' locked='false' title='Featured Posts' type='HTML' version='2' visible='true'>
           <b:widget-settings>
             <b:widget-setting name='content'>{getPosts} $label={recent} $style={1}</b:widget-setting>
           </b:widget-settings>
@@ -2872,7 +2954,15 @@ body#layout #hidden-widgets{display:none!important}
       <main id='main-wrapper'>
         <b:class cond='data:widgets any w =&gt; w.sectionId == &quot;content-section-2&quot;' name='has-margin'/>
         <b:section class='content-section' cond='data:view.isHomepage and (data:widgets any w =&gt; w.sectionId == &quot;content-section-1&quot;)' id='content-section-1' name='Content Section 1' showaddelement='yes'>
-          <b:widget id='HTML14' locked='false' title='World News' type='HTML' visible='true'>
+          <b:widget id='Text1' locked='false' title='Zulyyyyyyyyy' type='Text' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='content'>holaaaaaaaaa</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+      <b:include name='text-content'/>
+    </b:includable>
+          </b:widget>
+          <b:widget id='HTML14' locked='false' title='World News' type='HTML' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content'>{getPosts} $results={5} $label={recent} $type={block1}</b:widget-setting>
             </b:widget-settings>
@@ -2896,7 +2986,7 @@ body#layout #hidden-widgets{display:none!important}
       <b:include name='html-content'/>
     </b:includable>
           </b:widget>
-          <b:widget id='HTML13' locked='false' title='Laptops' type='HTML' visible='true'>
+          <b:widget id='HTML13' locked='false' title='Laptops' type='HTML' version='2' visible='false'>
             <b:widget-settings>
               <b:widget-setting name='content'>{getPosts} $results={4} $label={recent} $type={col-right}</b:widget-setting>
             </b:widget-settings>
@@ -2904,7 +2994,7 @@ body#layout #hidden-widgets{display:none!important}
       <b:include name='html-content'/>
     </b:includable>
           </b:widget>
-          <b:widget id='HTML22' locked='false' title='{ads}' type='HTML' visible='false'>
+          <b:widget id='HTML22' locked='false' title='{ads}' type='HTML' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content'><![CDATA[<a class="pbt-ad" href="https://imamuddinwp.com"><img src="https://1.bp.blogspot.com/-972Xp-wzqaQ/YTdlSm-Yd7I/AAAAAAAAAdE/lIGA_quGiJg02MqICVN2Ztx7mrdtIgyJACLcBGAsYHQ/s0/ads.png" alt="Magspot Blogger Template"/></a>]]></b:widget-setting>
             </b:widget-settings>
@@ -3428,7 +3518,7 @@ body#layout #hidden-widgets{display:none!important}
           </b:widget>
         </b:section>
         <b:section cond='data:view.isLayoutMode or (data:view.isPost and (data:widgets any w =&gt; w.sectionId == &quot;pro-post-footer-ads&quot;))' id='pro-post-footer-ads' maxwidgets='1' name='Post ADS 3' showaddelement='yes'>
-          <b:widget id='HTML9' locked='false' title='Project Update' type='HTML' visible='false'>
+          <b:widget id='HTML9' locked='false' title='Project Update' type='HTML' version='2' visible='false'>
             <b:widget-settings>
               <b:widget-setting name='content'><![CDATA[<a class="pbt-ad" href="https://imamuddinwp.com"><img src="https://1.bp.blogspot.com/-972Xp-wzqaQ/YTdlSm-Yd7I/AAAAAAAAAdE/lIGA_quGiJg02MqICVN2Ztx7mrdtIgyJACLcBGAsYHQ/s0/ads.png" alt="Magspot Blogger Template"/></a>]]></b:widget-setting>
             </b:widget-settings>
@@ -3438,6 +3528,14 @@ body#layout #hidden-widgets{display:none!important}
           </b:widget>
         </b:section>
         <b:section class='content-section' cond='data:view.isHomepage and (data:widgets any w =&gt; w.sectionId == &quot;content-section-2&quot;)' id='content-section-2' name='Content Section 2' showaddelement='yes'>
+          <b:widget id='Text2' locked='false' title='holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' type='Text' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='content'/>
+            </b:widget-settings>
+            <b:includable id='main'>
+      <b:include name='text-content'/>
+    </b:includable>
+          </b:widget>
           <b:widget id='HTML18' locked='false' title='{ads}' type='HTML' visible='false'>
             <b:widget-settings>
               <b:widget-setting name='content'><![CDATA[<a class="pbt-ad" href="https://imamuddinwp.com/"><img src="https://1.bp.blogspot.com/-972Xp-wzqaQ/YTdlSm-Yd7I/AAAAAAAAAdE/lIGA_quGiJg02MqICVN2Ztx7mrdtIgyJACLcBGAsYHQ/s0/ads.png" alt="Magspot Blogger Template"/></a>]]></b:widget-setting>
@@ -3446,7 +3544,7 @@ body#layout #hidden-widgets{display:none!important}
       <b:include name='html-content'/>
     </b:includable>
           </b:widget>
-          <b:widget id='HTML15' locked='false' title='Videos' type='HTML' visible='true'>
+          <b:widget id='HTML15' locked='false' title='Videos' type='HTML' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content'>{getPosts} $results={5} $label={recent} $type={video} $style={1}</b:widget-setting>
             </b:widget-settings>
@@ -3470,7 +3568,7 @@ body#layout #hidden-widgets{display:none!important}
       <b:include name='html-content'/>
     </b:includable>
           </b:widget>
-          <b:widget id='HTML10' locked='false' title='Car News' type='HTML' visible='true'>
+          <b:widget id='HTML10' locked='false' title='Car News' type='HTML' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content'>{getPosts} $results={4} $label={recent} $type={block2}</b:widget-setting>
             </b:widget-settings>
@@ -3482,6 +3580,36 @@ body#layout #hidden-widgets{display:none!important}
       </main>
       <aside id='sidebar-wrapper'>
         <b:section class='sidebar pbt-section' cond='!data:view.isError' id='sidebar' name='Sidebar' showaddelement='yes'>
+          <b:widget id='Translate1' locked='false' title='Translate' type='Translate' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='displayMode'>VERTICAL</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+  <b:include name='widget-title'/>
+  <b:include name='content'/>
+</b:includable>
+            <b:includable id='content'>
+  <div id='google_translate_element'/>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: &#39;<b:eval expr='data:blog.locale.language ?: &quot;auto&quot;'/>&#39;,
+        autoDisplay: &#39;true&#39;,
+        layout: google.translate.TranslateElement.InlineLayout.<data:layout/>
+      }, &#39;google_translate_element&#39;);
+    }
+  </script>
+  <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'/>
+</b:includable>
+          </b:widget>
+          <b:widget id='Text3' locked='false' title='holaaaaaaaaaaaaaaaaaaaaaaaaaaa' type='Text' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='content'/>
+            </b:widget-settings>
+            <b:includable id='main'>
+      <b:include name='text-content'/>
+    </b:includable>
+          </b:widget>
           <b:widget id='LinkList1' locked='false' title='Follow Us' type='LinkList' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='text-30'>Shounen</b:widget-setting>
@@ -3651,7 +3779,7 @@ body#layout #hidden-widgets{display:none!important}
       <b:include name='html-content'/>
     </b:includable>
           </b:widget>
-          <b:widget id='HTML12' locked='false' title='Travel' type='HTML' visible='true'>
+          <b:widget id='HTML12' locked='false' title='Travel' type='HTML' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='content'>{getPosts} $results={4} $label={recent} $style={3}</b:widget-setting>
             </b:widget-settings>
@@ -3675,7 +3803,7 @@ body#layout #hidden-widgets{display:none!important}
       <b:include name='html-content'/>
     </b:includable>
           </b:widget>
-          <b:widget id='Label1' locked='false' title='Categories' type='Label' visible='true'>
+          <b:widget id='Label1' locked='false' title='Categories' type='Label' version='2' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
               <b:widget-setting name='display'>LIST</b:widget-setting>
@@ -3849,7 +3977,7 @@ body#layout #hidden-widgets{display:none!important}
                 </b:widget>
               </b:section>
               <b:section class='footer-section pbt-section flex-col' id='footer-col-3' maxwidgets='3' name='Footer Right' showaddelement='yes'>
-                <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' visible='true'>
+                <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' version='2' visible='true'>
                   <b:widget-settings>
                     <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
                     <b:widget-setting name='showThumbnails'>true</b:widget-setting>
